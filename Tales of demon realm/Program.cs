@@ -8,18 +8,20 @@ namespace Tales_of_demon_realm {
         public static Player currentPlayer = new Player();
         public static ScalePan testPan;
         public static List<int> testList = new List<int>();
-        public static int whichTestWeight;
+        public static int randomOutput1;
+        public static int randomOutput2;
         static void Main(string[] args) {
             testPan = new ScalePan("testPan");
             testList.Add(1);
             testList.Add(4);
             testList.Add(3);
-            whichTestWeight = testPan.ScaleWeights(testList, 8, testPan.Name);
+            randomOutput1 = testPan.ScaleWeights(testList, testPan.Name);
+            randomOutput2 = testPan.ScaleWeights(testList, testPan.Name);
             if (!Directory.Exists("saves")) {
                 Directory.CreateDirectory("saves");
             }
             currentPlayer = Load(out bool newP);
-            Console.WriteLine(whichTestWeight);
+            Console.WriteLine(randomOutput1 + " 2 " + randomOutput2);
             Console.ReadLine();
             if (newP)
             {
