@@ -9,11 +9,13 @@ namespace Tales_of_demon_realm
     class EnemyAbility
     {
         public string name;
-        //public string quoteLibraryLink;
+        //public string abilitiesQuoteLibraryLink;
         public int weight;
         //public int repeats;
         //public int targettingType
         //punlic int range
+        //public bool isDelayed
+        //public bool isBuff
         public Dictionary<string, float> affectedEnemyStats = new Dictionary<string, float>();
         public EnemyAbility(string enemyAbilityName, int enemyAbilityWeight) {
             name = enemyAbilityName;
@@ -22,6 +24,12 @@ namespace Tales_of_demon_realm
 
         public void AddStat(string statName, float statMultiplier) {
             affectedEnemyStats.Add(statName, statMultiplier);
+        }
+
+        public float GetStatMultiplier(string statName) {
+            float statMultiplier = 0;
+            affectedEnemyStats.TryGetValue(statName, out statMultiplier);
+            return statMultiplier;
         }
     }
 }
