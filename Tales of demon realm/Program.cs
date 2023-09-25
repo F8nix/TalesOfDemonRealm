@@ -4,24 +4,41 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Tales_of_demon_realm {
+
+    /*public Enum EnemiesOffenciveAbilitiesName
+    {
+        normalAttack = "normalAttack",
+        weakAttack = "weakAttack",
+        strongAttack = "strongAttack"
+    }*/
     class Program {
         public static Player currentPlayer = new Player();
         public static ScalePan testPan;
-        public static List<int> testList = new List<int>();
+        public static List<int> enemyOneOffList = new List<int>();
+
+        public static EnemiesOffenciveAbilities enemiesOffenciveAbilities;
+        
+
+
         public static int randomOutput1;
         public static int randomOutput2;
         static void Main(string[] args) {
             testPan = new ScalePan("testPan");
-            testList.Add(1);
-            testList.Add(4);
-            testList.Add(3);
-            randomOutput1 = testPan.ScaleWeights(testList, testPan.Name);
-            randomOutput2 = testPan.ScaleWeights(testList, testPan.Name);
+            enemiesOffenciveAbilities = new EnemiesOffenciveAbilities();
+            enemyOneOffList.Add(enemiesOffenciveAbilities.normalAttack.weight);
+            enemyOneOffList.Add(enemiesOffenciveAbilities.strongAttack.weight);
+            enemyOneOffList.Add(enemiesOffenciveAbilities.weakAttack.weight);
+            randomOutput1 = testPan.ScaleWeights(enemyOneOffList, testPan.name);
+            randomOutput2 = testPan.ScaleWeights(enemyOneOffList, testPan.name);
             if (!Directory.Exists("saves")) {
                 Directory.CreateDirectory("saves");
             }
             currentPlayer = Load(out bool newP);
-            Console.WriteLine(randomOutput1 + " 2 " + randomOutput2);
+            string temp1;
+            string temp2;
+            enemiesOffenciveAbilities.abilitiesNames.TryGetValue(randomOutput1, out temp1);
+            enemiesOffenciveAbilities.abilitiesNames.TryGetValue(randomOutput2, out temp2);
+            Console.WriteLine(temp1+ " i kolejna umiejka "+temp2+ " na podstawie wartosci " + randomOutput1 + " i " +randomOutput2);
             Console.ReadLine();
             if (newP)
             {

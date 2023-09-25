@@ -8,17 +8,18 @@ namespace Tales_of_demon_realm
 {
     class ScalePan
     {
-        public string Name;
+        public string name;
         //public GlobalRngSeed seed;
 
-        public ScalePan(string name) {
-            Name = name;
+        public ScalePan(string scalePanName) {
+            name = scalePanName;
         }
 
-        public int ScaleWeights(List<int> weightsList, string name) {
+        public int ScaleWeights(List<int> weightsList, string scalePanName) {
+            //weighting process: which weight will be chosen basing on random; if not then wat failed
             //seed = new GlobalRngSeed(101);
-            int randomWeight = CalculateRandomWeight(weightsList, true, GlobalRngSeed.GetSeed());
-            if (Name == name)
+            int randomWeight = CalculateRandomWeight(weightsList, false, GlobalRngSeed.GetSeed());
+            if (name == scalePanName)
             {
                 int listCount = weightsList.Count;
                 List<int> weightsListCopy = weightsList; //how about iterator
@@ -41,19 +42,19 @@ namespace Tales_of_demon_realm
                         i = listCount;
                     }
                 }
-                Console.WriteLine("Too big random weight for " + Name + " list");
+                Console.WriteLine("Too big random weight for " + name + " list");
                 Console.ReadLine();
                 return 1;
             }
             else {
-                Console.WriteLine("Incorrect name for " + Name + " list");
+                Console.WriteLine("Incorrect name for " + name + " list");
                 Console.ReadLine();
                 return 2;
             }
         }
 
         public int CalculateRandomWeight(List<int> weightsList, bool isSeeded, int seed) {
-            
+            //outputs random/seeded int for weighting process
             int randomWeight = 0;
             foreach (int weight in weightsList)
             {
