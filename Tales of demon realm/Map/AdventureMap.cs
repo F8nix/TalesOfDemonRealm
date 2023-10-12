@@ -66,15 +66,15 @@ namespace Tales_of_demon_realm
 
         public void MapPrint() {
             playerReference = new Player();
-            int rows = 3;
-            int columns = 5;
-            for (int i = 0; i < rows; i++) {
+            int rows = 10;
+            int columns = 17;
+            for (int i = 0; i > -rows; i--) {
                 Console.WriteLine("");
                 Console.WriteLine("");
                 for (int j = 0; j < columns; j++) {
                     Console.Write("  ");
                     if (j == 0 || j == columns - 1) {
-                        if (i == 0 || i == rows - 1)
+                        if (i == 0 || i == -rows + 1)
                         {
                             Console.Write("#");
                         }
@@ -83,14 +83,14 @@ namespace Tales_of_demon_realm
                         }
                         
                     } else {
-                        if (i == 0 || i == rows - 1)
+                        if (i == 0 || i == -rows + 1)
                         {
                             Console.Write("-");
                         }
                         else
                         {
-                            Vector2 objectPositionChange = new Vector2(i,j);
-                            Console.Write(mapPositions.GetValueOrDefault(objectPositionChange).mapSignature);
+                            Vector2 objectPositionChange = new Vector2(i + (rows/2),j - (columns / 2));
+                            Console.Write(mapPositions.GetValueOrDefault(objectPositionChange + playerReference.playerPosition, defaultObject).mapSignature);
                         }
                     }
                 }

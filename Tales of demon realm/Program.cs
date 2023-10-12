@@ -37,6 +37,7 @@ namespace Tales_of_demon_realm {
                 Console.WriteLine(EnemyPresets.smallGoblin.UseAbility(AbilityType.Offensive));
             }
             */
+            adventureMap.InitializeLocations();
             adventureMap.MapPrint();
 
             Console.ReadLine();

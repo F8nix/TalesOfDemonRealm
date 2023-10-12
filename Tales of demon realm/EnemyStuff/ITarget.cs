@@ -8,7 +8,6 @@ namespace Tales_of_demon_realm
 {
     interface ITarget
     {
-        List<(int, Stats)> GetTarget();
-        //List<List<(int, Stats)>> GetTargets();
+        void IsTargetted(List<(int, Stats)> effectsList);
     }
 }

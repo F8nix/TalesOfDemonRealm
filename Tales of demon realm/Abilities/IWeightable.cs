@@ -9,6 +9,6 @@ namespace Tales_of_demon_realm
     interface IWeightable
     {
         int GetWeight();
-        AbilityType GetAbilityType();
+        AbilityType GetAbilityType(); //wywalic stad i wrzucic do predicate
     }
 }

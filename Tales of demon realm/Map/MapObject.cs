@@ -15,6 +15,8 @@ namespace Tales_of_demon_realm
             this.isWall = isWall;
             this.mapSignature = mapSignature;
         }
-        public MapObject() { }
+        public MapObject() {
+            mapSignature = "U";
+        }
     }
 }

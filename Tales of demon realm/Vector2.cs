@@ -25,5 +25,15 @@ namespace Tales_of_demon_realm
         public static Vector2 operator +(Vector2 current, Vector2 other) {
             return new Vector2(current.value1 + other.value1, current.value2 + other.value2);
         }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Vector2);
+        }
+
+        public override int GetHashCode()
+        {
+            return (value1, value2).GetHashCode();
+        }
     }
 }
