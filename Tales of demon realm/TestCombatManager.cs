@@ -15,9 +15,11 @@ namespace Tales_of_demon_realm
         public TestCombatManager() {
             enemyPresets = new EnemyPresets();
             enemyPlaces = new Enemy[8];
+            /*
             enemyPlaces[0] = enemyPresets.smallGoblin;
             enemyPlaces[1] = enemyPresets.mediumGoblin;
             enemyPlaces[2] = enemyPresets.lackOfIdeas;
+            */
         }
 
         //oczywiscie jakies metody do wavow
@@ -44,10 +46,12 @@ namespace Tales_of_demon_realm
             string input;
             input = Console.ReadLine();
             if (input == "s" && !playerTurn) {
+                /*
                 target -= enemyPlaces[0].CalculateAbilityEffect(true);
                 target -= enemyPlaces[1].CalculateAbilityEffect(true);
                 target -= enemyPlaces[2].CalculateAbilityEffect(true);
                 playerTurn = true;
+                */
             }
         }
 

@@ -5,19 +5,18 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Tales_of_demon_realm {
 
-    /*public Enum EnemiesOffenciveAbilitiesName
+    public enum EnemiesOffenciveAbilitiesName
     {
-        normalAttack = "normalAttack",
-        weakAttack = "weakAttack",
-        strongAttack = "strongAttack"
-    }*/
+        normalAttack,
+        weakAttack,
+        strongAttack
+    }
     class Program {
         public static Player currentPlayer = new Player();
-        public static ScalePan testPan;
         public static List<int> enemyOneOffList = new List<int>();
         public static bool isTesting = true;
 
-        public static EnemiesOffenciveAbilities enemiesOffenciveAbilities;
+        //public static EnemyPresets enemyPresets;
 
         public static TestCombatManager testCombatManager;
 
@@ -29,10 +28,12 @@ namespace Tales_of_demon_realm {
                 Directory.CreateDirectory("saves");
             }
             currentPlayer = Load(out bool newP);
-            while (isTesting) {
-                testCombatManager.PrintOutTestCombat();
-                testCombatManager.WaitForTurnInput();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Console.WriteLine(EnemyPresets.smallGoblin.UseAbility(AbilityType.Offensive));
             }
+
             Console.ReadLine();
             if (newP)
             {
