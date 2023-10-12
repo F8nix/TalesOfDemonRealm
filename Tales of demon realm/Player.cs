@@ -16,5 +16,11 @@ namespace Tales_of_demon_realm {
         public int potion = 5;
         public double weaponMinValue = 1;
         public double weaponMaxValue = 3;
+
+        public Vector2 playerPosition;
+
+        public void mapMovement(Vector2 direction) {
+            playerPosition += direction;
+        }
     }
 }
