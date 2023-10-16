@@ -38,6 +38,7 @@ namespace Tales_of_demon_realm {
             }
             */
             adventureMap.InitializeLocations();
+            PlayerController controller = new PlayerController() { adventureMap = adventureMap, player = currentPlayer };
             adventureMap.MapPrint();
 
             Console.ReadLine();
