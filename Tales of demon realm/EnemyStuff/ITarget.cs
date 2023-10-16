@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tales_of_demon_realm
 {
-    interface IWeightable
+    interface ITarget
     {
-        int GetWeight();
-        AbilityType GetAbilityType(); //wywalic stad i wrzucic do predicate
+        void IsTargetted(List<(int, Stats)> effectsList);
     }
 }

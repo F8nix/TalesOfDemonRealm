@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tales_of_demon_realm
 {
-    interface ITarget
+    class PlayerController
     {
-        List<(int, Stats)> GetTarget();
-        //List<List<(int, Stats)>> GetTargets();
+        public Player player;
+        public AdventureMap adventureMap;
     }
 }

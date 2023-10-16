@@ -14,10 +14,14 @@ namespace Tales_of_demon_realm
 
         public EnemyPresets() {
             smallGoblin = new Enemy("smallGoblin", 20, 3, 8, 0);
-            smallGoblin.AddAbility(AbilitiesLibrary.enemyWeakAttack);
-            smallGoblin.AddAbility(AbilitiesLibrary.enemyNormalAttack);
-            smallGoblin.AddAbility(AbilitiesLibrary.enemyWeirdAttack);
-            smallGoblin.AddAbility(AbilitiesLibrary.enemyWeakDefense);
+            smallGoblin.AddAbilities(new List<Ability>() {
+                AbilitiesLibrary.enemyWeakAttack,
+                AbilitiesLibrary.enemyNormalAttack,
+                AbilitiesLibrary.enemyWeirdAttack,
+                AbilitiesLibrary.enemyWeakDefense
+            });
+            //Cat cat = new Cat { Age = 10, Name = "Fluffy" };
+            //Cat sameCat = new Cat("Fluffy"){ Age = 10 };
 
             mediumGoblin = new Enemy("mediumGoblin", 80, 11, 16, 1);
             mediumGoblin.AddAbility(AbilitiesLibrary.enemyNormalAttack);

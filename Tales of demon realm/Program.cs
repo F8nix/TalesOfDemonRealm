@@ -15,6 +15,7 @@ namespace Tales_of_demon_realm {
         public static Player currentPlayer = new Player();
         public static List<int> enemyOneOffList = new List<int>();
         public static bool isTesting = true;
+        public static AdventureMap adventureMap;
 
         //public static EnemyPresets enemyPresets;
 
@@ -24,15 +25,21 @@ namespace Tales_of_demon_realm {
         public static int randomOutput2;
         static void Main(string[] args) {
             testCombatManager = new TestCombatManager();
+            adventureMap = new AdventureMap();
             if (!Directory.Exists("saves")) {
                 Directory.CreateDirectory("saves");
             }
             currentPlayer = Load(out bool newP);
 
+            /*
             for (int i = 0; i < 100; i++)
             {
                 Console.WriteLine(EnemyPresets.smallGoblin.UseAbility(AbilityType.Offensive));
             }
+            */
+            adventureMap.InitializeLocations();
+            PlayerController controller = new PlayerController() { adventureMap = adventureMap, player = currentPlayer };
+            adventureMap.MapPrint();
 
             Console.ReadLine();
             if (newP)

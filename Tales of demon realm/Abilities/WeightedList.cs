@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Tales_of_demon_realm
 {
-    class AbilitiesList<T> where T : IWeightable
+    class WeightedList<T> where T : IWeightable
     {
         public List<T> list;
 
-        public AbilitiesList() {
+        public WeightedList() {
             list = new List<T>();
         }
 
-        public T ChooseRandomAbility(AbilityType abilityType)
+        public T ChooseRandom(AbilityType abilityType)
         {
             //weighting process: which weight will be chosen basing on random; if not then wat failed
-            int randomWeight = CalculateRandomWeight(false, abilityType);
+            int randomWeight = CalculateRandomWeight(abilityType, false);
             int currentWeight;
 
             for (int i = 0; i < list.Count() ; i++) {
@@ -32,7 +32,7 @@ namespace Tales_of_demon_realm
                 }
             }
 
-            Console.WriteLine("Too big random weight for list");
+            Console.WriteLine("Too big random weight for list"); //throw new Exception
             Console.ReadLine();
             return list.ElementAt(0);
 
@@ -55,7 +55,7 @@ namespace Tales_of_demon_realm
             */
         }
 
-        public int CalculateRandomWeight(bool isSeeded, AbilityType abilityType)
+        public int CalculateRandomWeight(AbilityType abilityType, bool isSeeded = true)
         {
             int randomWeight = 0;
             foreach (IWeightable weight in list)

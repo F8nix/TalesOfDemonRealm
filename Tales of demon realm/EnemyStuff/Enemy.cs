@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tales_of_demon_realm
 {
-    class Enemy : ITarget
+    class Enemy
+    //class Enemy : ITarget
     {
         public string name;
         //public string type;
@@ -18,7 +19,7 @@ namespace Tales_of_demon_realm
         public double maxDmg;
         public double armor;
         //public int actions;
-        public AbilitiesList<Ability> enemyAbilities = new AbilitiesList<Ability>();
+        public WeightedList<Ability> enemyAbilities = new WeightedList<Ability>();
 
         public Enemy(string enemyName, double enemyHealth, double enemyMaxHealth, double enemyMinDamage, double enemyMaxDamage, double enemyArmor) //jeden powinien uzywac drugiego
         {
@@ -51,17 +52,23 @@ namespace Tales_of_demon_realm
             enemyAbilities.list.Add(ability);
         }
 
+        public void AddAbilities(List<Ability> abilitiesList) {
+            enemyAbilities.list.AddRange(abilitiesList);
+        }
+
+
         public List<(int, Stats)> UseAbility(AbilityType abilityType) {
             List<(int, Stats)> affectedEnemyStatsList = new List<(int, Stats)>();
-            foreach (var stat in enemyAbilities.ChooseRandomAbility(abilityType).affectedEnemyStats)
-            {
-                affectedEnemyStatsList.Add(enemyAbilities.ChooseRandomAbility(abilityType).CalculateAbilityEffect(stat, this));
+            foreach (var stat in enemyAbilities.ChooseRandom(abilityType).affectedEnemyStats){
+                affectedEnemyStatsList.Add(enemyAbilities.ChooseRandom(abilityType).CalculateAbilityEffect(stat, this));
             }
             return affectedEnemyStatsList;
         }
 
+        /*
         public List<(int, Stats)> GetTarget() {
-            return UseAbility(AbilityType.Offensive); //co ciekawe to jest istotne, że Offensive. Bo jak defensive, to by trzeba było dostować, że np self albo friendly celuje nagle
+            
         }
+        */
     }
 }
